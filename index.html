@@ -7,6 +7,13 @@
 		<meta name="description" content="Description-Here" />
 		<meta name="keywords" content="Keywords-Here" />
 		<meta name="author" content="Kenneth Garcia" />
+		<!--Google Fonts CDN-->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
+			rel="stylesheet"
+		/>
 		<!-- Font Awesome CDN -->
 		<link
 			rel="stylesheet"
@@ -27,8 +34,8 @@
 		<title>Movie Theater Seat Selector</title>
 	</head>
 	<body>
-		<div class="container py-3">
-			<h1 class="mb-4">Movie Theater</h1>
+		<div class="container py-3 gap-2">
+			<h1 class="mb-4 fw-bold fs-1">Movie Theater</h1>
 
 			<div class="movie-container mb-3">
 				<label for="#movie">Pick a Movie: </label>
@@ -55,8 +62,8 @@
 				</li>
 			</ul>
 
-			<div class="container">
-				<div class="screen"></div>
+			<div class="drop-container">
+				<div class="screen">[Screen]</div>
 
 				<div class="row mb-3">
 					<div class="seat occupied"></div>
@@ -127,7 +134,7 @@
 
 			<p class="lead">
 				You have selected <span id="seats-count" class="fw-bold">0</span> seats,
-				for a total of <span class="fw-bold">$</span
+				for a total of <span class="fw-bold msign">$</span
 				><span id="total-price" class="fw-bold">0.00</span>
 			</p>
 		</div>
