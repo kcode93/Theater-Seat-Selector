@@ -13,18 +13,33 @@ function updateSelectedSeatsCount(){
     //updates ticket price and seat count dynamically 
     const selectedSeats = document.querySelectorAll('.row .seat.selected');
     const selectedSeatsCount = selectedSeats.length;
+
+    //get array of seats from nodelist
+    const seatsIndex = [...selectedSeats].map((seat) => {
+        return [...seats].indexOf(seat);
+    });
     
+    //save selected seat index array on local storage
+    localStorage.setItem('selectedSeats', JSON.stringify(seatsIndex));
+
+    console.log(seatsIndex);
+
+    //print out the values to HTML element
     count.innerText = selectedSeatsCount;
     totalPrice.innerText = selectedSeatsCount * ticketPrice;
+
+
 }
 
 //clears the current seat selections
 function clearSeatSelection(){
     const selectSeats = document.querySelectorAll('.row .seat.selected');
+    //go thru node list and remove the proper class
     selectSeats.forEach((seat)=> {
         seat.classList.remove('selected');
     });
 
+    //update the proper value
     count.innerText = 0;
     totalPrice.innerText = ticketPrice * 0;
 }
