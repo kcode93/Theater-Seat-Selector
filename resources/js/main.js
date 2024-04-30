@@ -6,6 +6,7 @@ const totalPrice = document.querySelector('#total-price');
 const movieSelection = document.querySelector('#movie');
 const clear_btn = document.querySelector('#btn-clr');
 let ticketPrice = parseInt(movieSelection.value);
+let movieSelectionIndex = movieSelection.selectedIndex;
 console.log(ticketPrice);
 
 //updates the Selected Seats count
@@ -22,13 +23,19 @@ function updateSelectedSeatsCount(){
     //save selected seat index array on local storage
     localStorage.setItem('selectedSeats', JSON.stringify(seatsIndex));
 
-    console.log(seatsIndex);
+    //console.log(seatsIndex);
 
     //print out the values to HTML element
     count.innerText = selectedSeatsCount;
     totalPrice.innerText = selectedSeatsCount * ticketPrice;
 
 
+}
+
+function saveMovieData(movieIndex, movieCost){
+    //saves movie details to local storage
+    localStorage.setItem('selectedMovieIndex', movieIndex);
+    localStorage.setItem('selectedMovieCost', movieCost);
 }
 
 //clears the current seat selections
@@ -48,6 +55,8 @@ function clearSeatSelection(){
 movieSelection.addEventListener('change', function(e){
     //updates price dynamically as we change the ticket kind
     ticketPrice = parseInt(e.target.value);
+    movieSelectionIndex = e.target.selectedIndex;
+    saveMovieData(movieSelectionIndex, ticketPrice);
     updateSelectedSeatsCount();
 });
 
@@ -66,3 +75,6 @@ container.addEventListener('click', function(e){
     }
 
 });
+
+//adds the preselected movie values on load
+window.addEventListener('DOMContentLoaded', saveMovieData(movieSelectionIndex, ticketPrice));
