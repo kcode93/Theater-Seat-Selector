@@ -71,6 +71,18 @@ function clearSeatSelection(){
     //update the proper value
     count.innerText = 0;
     totalPrice.innerText = ticketPrice * 0;
+
+    if(localStorage.getItem('selectedMovieIndex')){
+        localStorage.removeItem('selectedMovieIndex');
+    }
+
+    if(localStorage.getItem('selectedMovieCost')){
+        localStorage.removeItem('selectedMovieCost');
+    }
+
+    if(localStorage.getItem('selectedSeats')){
+        localStorage.removeItem('selectedSeats');
+    }
 }
 
 //movie select Event
